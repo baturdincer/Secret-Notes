@@ -61,11 +61,17 @@ def encryptsave():
         file.writelines(titlefunc()+'\n')
         file.writelines(str(encrypt_message(secretfunc()),'utf8')+"\n")
         file.writelines(str(encrypt_message(masterkeyfunc()),'utf8')+"\n")
+    titleEntry.delete(0,END)
+    secretText.delete("1.0",END)
+    masterKeyEntry.delete(0, END)
 
 def decryptfunc():
     decryptedsecret = "Enter correct title or masterkey"
     title=titlefunc()
     password=masterkeyfunc()
+    titleEntry.delete(0,END)
+    secretText.delete("1.0",END)
+    masterKeyEntry.delete(0, END)
     with open("secretnotes.txt", "r") as file:
         lines=file.readlines()
     for i in range(len(lines)):
